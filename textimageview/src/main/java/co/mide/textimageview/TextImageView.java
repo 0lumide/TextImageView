@@ -1,9 +1,11 @@
 package co.mide.textimageview;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
@@ -32,6 +34,13 @@ public class TextImageView extends ForegroundImageView {
 
     public TextImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        init();
+        initAttributes(context, attrs);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public TextImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
         init();
         initAttributes(context, attrs);
     }
@@ -108,13 +117,11 @@ public class TextImageView extends ForegroundImageView {
     /**
      * Sets the text of the image.
      * Currently does not support multi line text
-     * @param text the text to be displayed in the image
+     * @param text the text to be displayed in the image. Passing null resets the text.
      * @return the TextImageView for method chaining
      */
     @SuppressWarnings("all")
-    public TextImageView setText(@NonNull String text){
-        if(text == null)
-            throw new IllegalArgumentException("text cannot be null");
+    public TextImageView setText(String text){
         this.text = text;
         invalidate();
         return this;
@@ -209,14 +216,12 @@ public class TextImageView extends ForegroundImageView {
         int xPos = (canvas.getWidth() / 2);
         int yPos = (int) ((canvas.getHeight() / 2) - ((textPaint.descent() + textPaint.ascent()) / 2)) ;
 
-        canvas.drawColor(backgroundPaint.getColor());
         if(isInEditMode()) {
-            int top, sides;
-            top = (int)(0.02222*canvas.getClipBounds().bottom);
-            sides = (int)(0.2222*canvas.getClipBounds().bottom);
-            canvas.drawRect(sides, canvas.getClipBounds().bottom/2 - top, canvas.getClipBounds().right - sides
-                    , canvas.getClipBounds().bottom/2 + top, textPaint);
+            //canvas.getWidth() and canvas.getHeight() values are incorrect in editMode
+            xPos = canvas.getClipBounds().right/2;
+            yPos = (int)(canvas.getClipBounds().bottom / 2 - ((textPaint.descent() + textPaint.ascent()) / 2));
         }
+        canvas.drawColor(backgroundPaint.getColor());
         canvas.drawText(text, xPos, yPos, textPaint);
     }
 }

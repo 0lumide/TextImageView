@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:background="#ff0000"
+    android:layout_height="wrap_content">
+    <com.github.danielnilsson9.colorpickerview.view.ColorPanelView
+        android:id="@+id/textcolorpicker"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
+    <TextView
+        android:textSize="16sp"
+        android:layout_margin="5dp"
+        android:text="text color"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

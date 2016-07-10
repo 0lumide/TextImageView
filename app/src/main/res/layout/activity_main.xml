@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.mide.sample.textimageview.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/colors"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <com.github.danielnilsson9.colorpickerview.view.ColorPanelView
+                android:id="@+id/textcolorpicker"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <TextView
+                android:textSize="16sp"
+                android:layout_margin="5dp"
+                android:text="@string/text_color"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:id="@+id/background_layout"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content">
+            <com.github.danielnilsson9.colorpickerview.view.ColorPanelView
+                android:id="@+id/backcolorpicker"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <TextView
+                android:textSize="16sp"
+                android:layout_margin="5dp"
+                android:text="@string/background_color"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <co.mide.textimageview.TextImageView
+        android:layout_below="@+id/colors"
+        android:id="@+id/textimageview"
+        android:layout_centerHorizontal="true"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:text="Hello World!" />
+    <EditText
+        android:id="@+id/text"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:hint="@string/image_text"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

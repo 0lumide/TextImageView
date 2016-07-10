@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">TextImageView</string>
+    <string name="text_color">Text color</string>
+    <string name="background_color">Background color</string>
+    <string name="image_text">Image text</string>
+</resources>

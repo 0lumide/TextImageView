@@ -4,6 +4,7 @@ package co.mide.textimageview;
  * Created by Jake Wharton in 2014.
  * https://gist.github.com/JakeWharton/0a251d67649305d84e8a
  */
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -30,6 +31,11 @@ public class ForegroundImageView extends ImageView {
     public ForegroundImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         initAttributes(context, attrs);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public ForegroundImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     private void initAttributes(Context context, AttributeSet attrs){
