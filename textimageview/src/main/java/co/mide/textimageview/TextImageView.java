@@ -6,7 +6,6 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 
@@ -141,8 +140,11 @@ public class TextImageView extends ForegroundImageView {
      * @return the TextImageView for method chaining
      */
     public TextImageView setTextSize(int textSize){
+        final int MAX_TEXT_SIZE = 800;
         if(textSize <= 0)
             throw new IllegalArgumentException("textSize has to be greater than 0");
+        if(textSize > MAX_TEXT_SIZE)
+            textSize = MAX_TEXT_SIZE;
         this.textSize = textSize;
         invalidate();
         return this;
