@@ -19,6 +19,7 @@ public class TextImageView extends ForegroundImageView {
     private String text;
     private int textSize = -1;
     private Paint textPaint, backgroundPaint;
+    private final int MAX_FONT_SIZE = 512;
 
     public TextImageView(Context context){
         super(context);
@@ -71,7 +72,7 @@ public class TextImageView extends ForegroundImageView {
             backgroundPaint.setColor(a.getColor(R.styleable.TextImageView_backgroundColor, getImageBackgroundColor()));
             if(a.hasValue(R.styleable.TextImageView_text))
                 text = a.getString(R.styleable.TextImageView_text);
-            textSize = a.getDimensionPixelSize(R.styleable.TextImageView_textSize, textSize);
+            setTextSize(a.getDimensionPixelSize(R.styleable.TextImageView_textSize, textSize));
         } finally {
             a.recycle();
         }
@@ -136,15 +137,14 @@ public class TextImageView extends ForegroundImageView {
 
     /**
      * This sets the text size of the text in the imageView
-     * @param textSize this is the size of the text in pixels
+     * @param textSize this is the size of the text in pixels, it has a maximum value of 800.
      * @return the TextImageView for method chaining
      */
     public TextImageView setTextSize(int textSize){
-        final int MAX_TEXT_SIZE = 800;
         if(textSize <= 0)
             throw new IllegalArgumentException("textSize has to be greater than 0");
-        if(textSize > MAX_TEXT_SIZE)
-            textSize = MAX_TEXT_SIZE;
+        if(textSize > MAX_FONT_SIZE)
+            textSize = MAX_FONT_SIZE;
         this.textSize = textSize;
         invalidate();
         return this;
@@ -203,7 +203,7 @@ public class TextImageView extends ForegroundImageView {
         if(text == null)
             text = String.format("%d %c %d", getWidth(), multiplication, getHeight());
         if(textSize == -1) {
-            int newTextSize = (int)Math.min(Math.max(Math.min(getWidth()/text.length()*1.15, getHeight()*0.5) ,5), 512);
+            int newTextSize = (int)Math.min(Math.max(Math.min(getWidth()/text.length()*1.15, getHeight()*0.5) ,5), MAX_FONT_SIZE);
             textPaint.setTextSize(newTextSize);
         }else{
             textPaint.setTextSize(textSize);
