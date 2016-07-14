@@ -7,7 +7,7 @@ Include the jitpack repository to your project. See [jitpack.io](https://jitpack
 Include the library in your project via Gradle:
 ```
 dependencies {
-    compile 'com.github.0lumide:TextImageView:v0.0.3-alpha'
+    compile 'com.github.0lumide:TextImageView:v0.0.4-alpha'
 }
 ```
 
@@ -16,7 +16,7 @@ or Maven, if you're into that sort of thing
 <dependency>
     <groupId>com.github.0lumide</groupId>
     <artifactId>TextImageView</artifactId>
-    <version>v0.0.3-alpha</version>
+    <version>v0.0.4-alpha</version>
 </dependency>
 ```
 
