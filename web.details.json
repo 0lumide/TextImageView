@@ -1,6 +1,6 @@
 {
     "title": "TextImageView",
-    "description": "ImageView Placeholder",
+    "description": "An android ImageView Placeholder",
     "details": "This is an android library that generated ImageViews based on text. It's based on dummyimage.com and placehold.it",
     "iconImage": "img/icon.png",
     "media": [
